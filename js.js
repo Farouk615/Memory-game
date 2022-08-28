@@ -6,7 +6,7 @@ document.querySelector(".control-buttons span").onclick = function(){
     document.querySelector(".control-buttons").remove();
     document.querySelector('.name span').innerHTML=yourName;
 }
-let duration = 1000;
+var duration = 1000;
 let blockContainer = document.querySelector(".memory-game-blocks");
 
 // Like Array.from
@@ -31,11 +31,29 @@ function flip(block){
     if(allFlippedBlocks.length==2){
         console.log('there is 2 element')
         stopClicking();
+        hasMatched(allFlippedBlocks)
     }
 }
 function stopClicking(){
     blockContainer.classList.add('no-clicking')
     setTimeout(()=>{
         blockContainer.classList.remove('no-clicking')
-    },1000)
+    },duration)
+}
+function hasMatched(allFlippedBlocks){
+    firstBlock = allFlippedBlocks[0];
+    secondBlock = allFlippedBlocks[1]
+    if(firstBlock.dataset.technology === secondBlock.dataset.technology){
+        firstBlock.classList.remove('is-flipped')
+        secondBlock.classList.remove('is-flipped')
+
+        firstBlock.classList.remove('has-matched')
+        secondBlock.classList.remove('has-matched')
+    }
+    else{
+        setTimeout(() => {
+            firstBlock.classList.remove('is-flipped')
+            secondBlock.classList.remove('is-flipped')
+        }, duration);
+    }
 }
