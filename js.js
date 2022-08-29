@@ -44,13 +44,15 @@ function hasMatched(allFlippedBlocks){
     firstBlock = allFlippedBlocks[0];
     secondBlock = allFlippedBlocks[1]
     if(firstBlock.dataset.technology === secondBlock.dataset.technology){
-        firstBlock.classList.remove('is-flipped')
-        secondBlock.classList.remove('is-flipped')
-
-        firstBlock.classList.remove('has-matched')
-        secondBlock.classList.remove('has-matched')
+        document.getElementById('success').play()
+            firstBlock.classList.remove('is-flipped')
+            secondBlock.classList.remove('is-flipped')
+        firstBlock.classList.add('has-match')
+        secondBlock.classList.add('has-match')
     }
     else{
+        document.getElementById('failed').play()
+        document.querySelector('.tries span').textContent++;
         setTimeout(() => {
             firstBlock.classList.remove('is-flipped')
             secondBlock.classList.remove('is-flipped')
