@@ -6,6 +6,7 @@ document.querySelector(".control-buttons span").onclick = function(){
     document.querySelector(".control-buttons").remove();
     document.querySelector('.name span').innerHTML=yourName;
 }
+document.getElementById('start').play()
 var duration = 1000;
 let blockContainer = document.querySelector(".memory-game-blocks");
 
